@@ -2,43 +2,74 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ »ı¼ºÇÏ±â1</title>
-    <style>
-.label {margin-bottom: 96px;}
-.label * {display: inline-block;vertical-align: top;}
-.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
-.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
-.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
-</style>
+    <title>geolocationìœ¼ë¡œ ë§ˆì»¤ í‘œì‹œí•˜ê¸°</title>
+    
 </head>
 <body>
+<p style="margin-top:-12px">
+    <b>Chrome ë¸Œë¼ìš°ì €ëŠ” https í™˜ê²½ì—ì„œë§Œ geolocationì„ ì§€ì›í•©ë‹ˆë‹¤.</b> ì°¸ê³ í•´ì£¼ì„¸ìš”.
+</p>
 <div id="map" style="width:100%;height:350px;"></div>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=4497b28925a1822c41d2af93c0eaf3f9"></script>
 <script>
-var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div 
-  mapOption = { 
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-        level: 3 // ÁöµµÀÇ È®´ë ·¹º§
+var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+        level: 10 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨ 
     }; 
 
-var map = new kakao.maps.Map(mapContainer, mapOption); // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
+var map = new kakao.maps.Map(mapContainer, mapOption); // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
 
-// Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ¿¡ Ç¥½ÃÇÒ ³»¿ëÀÔ´Ï´Ù     
-// HTML ¹®ÀÚ¿­ ¶Ç´Â Dom Element ÀÔ´Ï´Ù 
-var content = '<div class ="label"><span class="left"></span><span class="center">³»Å×½ºÆ®!</span><span class="right"></span></div>';
+// HTML5ì˜ geolocationìœ¼ë¡œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ”ì§€ í™•ì¸í•©ë‹ˆë‹¤ 
+if (navigator.geolocation) {
+    
+    // GeoLocationì„ ì´ìš©í•´ì„œ ì ‘ì† ìœ„ì¹˜ë¥¼ ì–»ì–´ì˜µë‹ˆë‹¤
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        var lat = position.coords.latitude, // ìœ„ë„
+            lon = position.coords.longitude; // ê²½ë„
+        
+        var locPosition = new kakao.maps.LatLng(lat, lon), // ë§ˆì»¤ê°€ í‘œì‹œë  ìœ„ì¹˜ë¥¼ geolocationìœ¼ë¡œ ì–»ì–´ì˜¨ ì¢Œí‘œë¡œ ìƒì„±í•©ë‹ˆë‹¤
+            message = '<div style="padding:5px;">ì—¬ê¸°ì— ê³„ì‹ ê°€ìš”?!</div>'; // ì¸í¬ìœˆë„ìš°ì— í‘œì‹œë  ë‚´ìš©ì…ë‹ˆë‹¤
+        
+        // ë§ˆì»¤ì™€ ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
+        displayMarker(locPosition, message);
+            
+      });
+    
+} else { // HTML5ì˜ GeoLocationì„ ì‚¬ìš©í•  ìˆ˜ ì—†ì„ë•Œ ë§ˆì»¤ í‘œì‹œ ìœ„ì¹˜ì™€ ì¸í¬ìœˆë„ìš° ë‚´ìš©ì„ ì„¤ì •í•©ë‹ˆë‹¤
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocationì„ ì‚¬ìš©í• ìˆ˜ ì—†ì–´ìš”..'
+        
+    displayMarker(locPosition, message);
+}
 
-// Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ°¡ Ç¥½ÃµÉ À§Ä¡ÀÔ´Ï´Ù 
-var position = new kakao.maps.LatLng(33.450701, 126.570667);  
+// ì§€ë„ì— ë§ˆì»¤ì™€ ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
+function displayMarker(locPosition, message) {
 
-// Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ¸¦ »ı¼ºÇÕ´Ï´Ù
-var customOverlay = new kakao.maps.CustomOverlay({
-    position: position,
-    content: content   
-});
+    // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+    var marker = new kakao.maps.Marker({  
+        map: map, 
+        position: locPosition
+    }); 
+    
+    var iwContent = message, // ì¸í¬ìœˆë„ìš°ì— í‘œì‹œí•  ë‚´ìš©
+        iwRemoveable = true;
 
-// Ä¿½ºÅÒ ¿À¹ö·¹ÀÌ¸¦ Áöµµ¿¡ Ç¥½ÃÇÕ´Ï´Ù
-customOverlay.setMap(map);
+    // ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+    var infowindow = new kakao.maps.InfoWindow({
+        content : iwContent,
+        removable : iwRemoveable
+    });
+    
+    // ì¸í¬ìœˆë„ìš°ë¥¼ ë§ˆì»¤ìœ„ì— í‘œì‹œí•©ë‹ˆë‹¤ 
+    infowindow.open(map, marker);
+    
+    // ì§€ë„ ì¤‘ì‹¬ì¢Œí‘œë¥¼ ì ‘ì†ìœ„ì¹˜ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
+    map.setCenter(locPosition);      
+}    
 </script>
 </body>
 </html>
