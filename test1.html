@@ -1,56 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Wireless Connectivity Test</title>
-    
+
+<title>Insert title here</title>
+<style>
+    .area {
+        border:1px solid red;
+        height:100px;
+    }
+</style>
 </head>
 <body>
 
-<!-- ì´ë¯¸ì§€ ì§€ë„ë¥¼ í‘œì‹œí•  div ì…ë‹ˆë‹¤ -->
 
-<input name="key" type="text" />
-<!-- <input name="key" type="password" /> -->
+
+
+<!-- <input name="key" type="password" />       <input name="key" type="text" /><br/>           -->
+<!-- <input type="submit" value="Àü¼Û"><br/> -->
+
+
+
 <div id="staticMap" style="width:1200px;height:700px;"></div>    
 
 <!--  4497b28925a1822c41d2af93c0eaf3f9 -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key"></script>
+
+<input type="text" name="text" id="target" />
+<input type="button" value="Á¦Ãâ" onclick="showText()">
+
+<script>
+    function showText() {
+        alert(document.getElementById("target").value);
+    }
+</script>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=target"></script>
+
 <script>    
-// ì´ë¯¸ì§€ ì§€ë„ì— í‘œì‹œí•  ë§ˆì»¤ì…ë‹ˆë‹¤
-// ì´ë¯¸ì§€ ì§€ë„ì— í‘œì‹œí•  ë§ˆì»¤ë¥¼ ì•„ë˜ì™€ ê°™ì´ ë°°ì—´ë¡œ ë„£ì–´ì£¼ë©´ ì—¬ëŸ¬ê°œì˜ ë§ˆì»¤ë¥¼ í‘œì‹œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤ 
+// ÀÌ¹ÌÁö Áöµµ¿¡ Ç¥½ÃÇÒ ¸¶Ä¿ÀÔ´Ï´Ù
+// ÀÌ¹ÌÁö Áöµµ¿¡ Ç¥½ÃÇÒ ¸¶Ä¿¸¦ ¾Æ·¡¿Í °°ÀÌ ¹è¿­·Î ³Ö¾îÁÖ¸é ¿©·¯°³ÀÇ ¸¶Ä¿¸¦ Ç¥½ÃÇÒ ¼ö ÀÖ½À´Ï´Ù 
 var markers = [
     {
         position: new kakao.maps.LatLng(37.517065039059766, 127.05946304749904)
     },
     {
         position: new kakao.maps.LatLng(37.517065039059766, 127.05946304749904), 
-        text: 'Gateway' // text ì˜µì…˜ì„ ì„¤ì •í•˜ë©´ ë§ˆì»¤ ìœ„ì— í…ìŠ¤íŠ¸ë¥¼ í•¨ê»˜ í‘œì‹œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤     
+        text: 'Gateway' // text ¿É¼ÇÀ» ¼³Á¤ÇÏ¸é ¸¶Ä¿ À§¿¡ ÅØ½ºÆ®¸¦ ÇÔ²² Ç¥½ÃÇÒ ¼ö ÀÖ½À´Ï´Ù     
     },
     {
         position: new kakao.maps.LatLng(37.51463189877885, 127.06021352055063), 
-        text: 'DATE : 2021.01.01. TIME:15:33:34 Message 1' // text ì˜µì…˜ì„ ì„¤ì •í•˜ë©´ ë§ˆì»¤ ìœ„ì— í…ìŠ¤íŠ¸ë¥¼ í•¨ê»˜ í‘œì‹œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤     
+        text: 'DATE : 2021.01.01. TIME:15:33:34 Message 1' // text ¿É¼ÇÀ» ¼³Á¤ÇÏ¸é ¸¶Ä¿ À§¿¡ ÅØ½ºÆ®¸¦ ÇÔ²² Ç¥½ÃÇÒ ¼ö ÀÖ½À´Ï´Ù     
     },
     {
         position: new kakao.maps.LatLng(37.519429183145974, 127.05749666703264), 
-        text: 'DATE : 2021.01.01. TIME:15:33:57 Message 2' // text ì˜µì…˜ì„ ì„¤ì •í•˜ë©´ ë§ˆì»¤ ìœ„ì— í…ìŠ¤íŠ¸ë¥¼ í•¨ê»˜ í‘œì‹œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤      
+        text: 'DATE : 2021.01.01. TIME:15:33:57 Message 2' // text ¿É¼ÇÀ» ¼³Á¤ÇÏ¸é ¸¶Ä¿ À§¿¡ ÅØ½ºÆ®¸¦ ÇÔ²² Ç¥½ÃÇÒ ¼ö ÀÖ½À´Ï´Ù      
     }
     ,
     {
         position: new kakao.maps.LatLng(37.525268443491655, 127.0546499740833), 
-        text: 'DATE : 2021.01.01. TIME:15:35:03 Message 3' // text ì˜µì…˜ì„ ì„¤ì •í•˜ë©´ ë§ˆì»¤ ìœ„ì— í…ìŠ¤íŠ¸ë¥¼ í•¨ê»˜ í‘œì‹œí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤      
+        text: 'DATE : 2021.01.01. TIME:15:35:03 Message 3' // text ¿É¼ÇÀ» ¼³Á¤ÇÏ¸é ¸¶Ä¿ À§¿¡ ÅØ½ºÆ®¸¦ ÇÔ²² Ç¥½ÃÇÒ ¼ö ÀÖ½À´Ï´Ù      
     }
     
 ];
 
-var staticMapContainer  = document.getElementById('staticMap'), // ì´ë¯¸ì§€ ì§€ë„ë¥¼ í‘œì‹œí•  div  
+var staticMapContainer  = document.getElementById('staticMap'), // ÀÌ¹ÌÁö Áöµµ¸¦ Ç¥½ÃÇÒ div  
     staticMapOption = { 
-        center: new kakao.maps.LatLng(37.517065039059766, 127.05946304749904), // ì´ë¯¸ì§€ ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
-        level: 5, // ì´ë¯¸ì§€ ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
-        marker: markers // ì´ë¯¸ì§€ ì§€ë„ì— í‘œì‹œí•  ë§ˆì»¤ 
+        center: new kakao.maps.LatLng(37.517065039059766, 127.05946304749904), // ÀÌ¹ÌÁö ÁöµµÀÇ Áß½ÉÁÂÇ¥
+        level: 5, // ÀÌ¹ÌÁö ÁöµµÀÇ È®´ë ·¹º§
+        marker: markers // ÀÌ¹ÌÁö Áöµµ¿¡ Ç¥½ÃÇÒ ¸¶Ä¿ 
     };    
 
-// ì´ë¯¸ì§€ ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+// ÀÌ¹ÌÁö Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
 var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
-</script>
-</body>
+
 </html>
+
+
+ÃâÃ³: https://qdgbjsdnb.tistory.com/165 [ÇÏÀ§^^]
