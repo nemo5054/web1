@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>마커와 텍스트 표시하기</title>
+    //<meta charset="utf-8">
+    <title>Wireless Connectivity Test</title>
     
 </head>
 <body>
@@ -19,11 +19,20 @@ var markers = [
     },
     {
         position: new kakao.maps.LatLng(37.517065039059766, 127.05946304749904), 
-        text: '내가 표시한 마커에요 1!' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
+        text: 'Anchor' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
     },
     {
         position: new kakao.maps.LatLng(37.516065039059766, 127.05946304749904), 
-        text: '내가 표시한 마커에요 2!' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
+        text: 'DATE : 2021.01.01. TIME:15:33:34 Message 1' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다     
+    },
+    {
+        position: new kakao.maps.LatLng(37.519429183145974, 127.05749666703264), 
+        text: 'DATE : 2021.01.01. TIME:15:33:57 Message 2' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다      
+    }
+    ,
+    {
+        position: new kakao.maps.LatLng(37.519585131526924, 127.0544542314245), 
+        text: 'DATE : 2021.01.01. TIME:15:35:03 Message 3' // text 옵션을 설정하면 마커 위에 텍스트를 함께 표시할 수 있습니다      
     }
     
 ];
@@ -31,7 +40,7 @@ var markers = [
 var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를 표시할 div  
     staticMapOption = { 
         center: new kakao.maps.LatLng(37.517065039059766, 127.05946304749904), // 이미지 지도의 중심좌표
-        level: 3, // 이미지 지도의 확대 레벨
+        level: 6, // 이미지 지도의 확대 레벨
         marker: markers // 이미지 지도에 표시할 마커 
     };    
 
