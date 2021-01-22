@@ -1,38 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Insert title here</title>
-<style>
-    .area {
-        border:1px solid red;
-        height:100px;
-    }
-</style>
+    <meta charset="utf-8">
+    <title>Wireless Connectivity Test</title>
+    
 </head>
 <body>
 
+<!-- 이미지 지도를 표시할 div 입니다 -->
 
-
-
-<!-- <input name="key" type="password" />       <input name="key" type="text" /><br/>           -->
-<!-- <input type="submit" value="전송"><br/> -->
-
+접근코드 : <input name="key" type="password" />
+<input type="submit" value="전송">
+<!-- <input name="key" type="password" /> -->
+<div id="staticMap" style="width:1200px;height:700px;"></div>    
 
 <!--  4497b28925a1822c41d2af93c0eaf3f9 -->
-
-<input type="text" name="text" id="target" />
-<input type="button" value="제출" onclick="showText()">
-
-<script>
-    function showText() {
-        alert(document.getElementById("target").value);
-    }
-</script>
-
-<div id="staticMap" style="width:1200px;height:700px;"></div>    
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=target"></script>
-
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key"></script>
 <script>    
 // 이미지 지도에 표시할 마커입니다
 // 이미지 지도에 표시할 마커를 아래와 같이 배열로 넣어주면 여러개의 마커를 표시할 수 있습니다 
@@ -69,8 +52,6 @@ var staticMapContainer  = document.getElementById('staticMap'), // 이미지 지도를
 
 // 이미지 지도를 생성합니다
 var staticMap = new kakao.maps.StaticMap(staticMapContainer, staticMapOption);
-
+</script>
+</body>
 </html>
-
-
-출처: https://qdgbjsdnb.tistory.com/165 [하위^^]
